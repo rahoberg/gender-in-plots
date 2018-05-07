@@ -111,10 +111,13 @@ for i in range(numscatter):
         c[i*numscatter+j]=math.log(float(countsarray[i][j])+1)
         s[i*numscatter+j]=float(countsarray[i][j])/10
 plt.scatter(x,y,s=s,c=c,cmap='cool')
+plt.xlabel('Male pronouns')
+plt.ylabel('Female pronouns')
+plt.title('Small pronoun counts')
 pylab.savefig('coolscatter.png')
 
-plt.scatter(x,y,s=s,c=c,cmap='hot')
-pylab.savefig('hotscatter.png')
+#plt.scatter(x,y,s=s,c=c,cmap='hot')
+#pylab.savefig('hotscatter.png')
 
 #Plotting all titles
 n_groups = 4
