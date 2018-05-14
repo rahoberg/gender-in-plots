@@ -1,3 +1,4 @@
+import sys
 import math
 import pylab
 import matplotlib.pyplot as plt
@@ -5,12 +6,6 @@ import numpy as np
 import csv
 import re
 
-plottitles = open("plots/titles")
-plotplots = open("plots/plots")
-titleline=plottitles.readline()
-plotline=plotplots.readline()
-femcount=0
-masccount=0
 zeroshecount=0
 zerohecount=0
 smallshecount=0
@@ -27,37 +22,41 @@ tvmedshecount=0
 tvmedhecount=0
 tvlargeshecount=0
 tvlargehecount=0
-#xlargehecount=0
-#xlargeshecount=0
 hecountlist=[]
 shecountlist=[]
 numscatter=10
 countsarray=[[0]*numscatter for i in range(numscatter)]
+
+try:
+    plottitles = open("plots/titles",'r')
+except IOError:
+    print "Could not read file:", "plots/titles"
+    sys.exit()
+
+try:
+    plotplots = open("plots/plots",'r')
+except IOError:
+    print "Could not read file:", "plots/plots"
+    sys.exit()
+
+titleline=plottitles.readline()
+plotline=plotplots.readline()
+
 while plotline and titleline:
     hecount=0
     shecount=0
     while "<EOS>" not in plotline:
-        hecount+=len(re.findall(r'\b[hH]i[sm]\b',plotline))#.count(" he ")
+        hecount+=len(re.findall(r'\b[hH]i[sm]\b',plotline))
         hecount+=len(re.findall(r'\b[hH]e\b',plotline))
         hecount+=len(re.findall(r'\b[hH]imself\b',plotline))
         shecount+=len(re.findall(r'\b[hH]ers?\b',plotline))
         shecount+=len(re.findall(r'\b[sS]he\b',plotline))
         shecount+=len(re.findall(r'\b[hH]erself\b',plotline))
-#        hecount+=plotline.count(" He ")
-#        shecount+=plotline.count(" she ")
-#        shecount+=plotline.count(" She ")
-#        hecount+=plotline.count(" his ")
-#        hecount+=plotline.count(" him ")
-#        shecount+=plotline.count(" her ")
         plotline=plotplots.readline()
     if hecount<numscatter and shecount<numscatter:
         countsarray[hecount][shecount]+=1
         hecountlist.append(hecount)
         shecountlist.append(shecount)
-    if shecount!=0 and hecount==0:
-        femcount+=1
-    if shecount==0 and hecount!=0:
-        masccount+=1
     if shecount==0:
         zeroshecount+=1
     if hecount==0:
