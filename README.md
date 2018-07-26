@@ -12,4 +12,4 @@ The code used to extract the plots and also to analyze the gender disparities ca
 
 ## Acknowledgments
 
-Inspired by https://github.com/markriedl/WikiPlots
+Inspired by https://github.com/markriedl/WikiPlots (and some code in the misc folder is based on this data)
