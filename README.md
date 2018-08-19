@@ -1,14 +1,25 @@
 # gender-in-plots
 
-The purpose of the project is to look at gender disparities in terms of plot descriptions of movies and other stories on Wikipedia. 
+The purpose of the project is to look at gender disparities in terms of plot descriptions of movies and other stories on Wikipedia. Specifically, we use the count of gendered pronouns within plot descriptions as 
 
 ## Source Code
 
-The code used to extract the plots and also to analyze the gender disparities can be found in source. The code can be easily modified to extract plots from any category on Wikipedia.
+extractplots.py
+The function findplots takes a Wikipedia category and an output file name, and extracts all plots (anything with a subheader containing the word "plot") from each page in the category. It outputs plots to the output file, alternating between the title of the page and the contents of the plot description.
+
+pronounAnalysis.py
+From a file in the format extracted by extractplots.py (that is, alternating between title and plot descriptions), computes the counts of male and female pronouns. (he/him/himself/his, she/her/herself/hers)
+For a single category, computes a scatterplot of the pronoun counts, and compute the ECDF of male vs female counts.
+Also runs a permutation test for the data under the null hypothesis that the male and female pronoun counts came from the same distribution. For many categories, we see strong evidence that male pronouns are used significantly more than female pronouns, which suggests that the stories are really "about" men and boys, or at least that Wikipedia editors believe so.
+For the data from moviesByYear, we can see that the trend over time within movies is for the counts to get closer together, but they are still different.
+
+## Plotdata
+
+Contains files obtained by extractplots.py. The files in moviesByYear use the movie categories from 1990-2018 which allow for an analysis of change over time.
 
 ## Figures
 
-In the figures folder is some exploratory data analysis for the distribution of counts for male vs female pronouns in certain categories. There are also a few scatter plots illustrating the joint distribution. Finally, there is a figure representing the difference in male vs female pronouns in movies from 1990-2018. Perhaps hopeful that the difference is decreasing, but still has a long way to go!
+Contains figures created by pronounAnalysis.py.
 
 ## Acknowledgments
 
