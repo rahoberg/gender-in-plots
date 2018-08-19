@@ -1,6 +1,6 @@
 # gender-in-plots
 
-The purpose of the project is to look at gender disparities in terms of plot descriptions of movies and other stories on Wikipedia. Specifically, we use the count of gendered pronouns within plot descriptions as 
+The purpose of the project is to look at gender disparities in terms of plot descriptions of movies and other stories on Wikipedia. Specifically, we use the count of gendered pronouns within plot descriptions as indicators of the gender of the most important characters.
 
 ## Source Code
 
